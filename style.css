@@ -1,10 +1,9 @@
-/* style.css */
 body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
 }
 
 header {
@@ -13,25 +12,21 @@ header {
   text-align: center;
 }
 
-header h1 {
-  margin: 0;
-}
-
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0;
+  margin: 10px 0 0;
 }
 
 nav ul li {
-  margin: 0 15px;
+  margin: 10px 15px;
 }
 
 nav ul li a {
-  color: #ffffff;
+  color: white;
   text-decoration: none;
   font-weight: bold;
 }
@@ -63,7 +58,7 @@ form textarea {
 
 form button {
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: white;
   color: #121212;
   border: none;
   border-radius: 4px;
@@ -72,12 +67,11 @@ form button {
 }
 
 form button:hover {
-  background-color: #cccccc;
+  background-color: #ccc;
 }
 
 footer {
   background-color: #1f1f1f;
   text-align: center;
   padding: 20px;
-  margin-top: 50px;
 }

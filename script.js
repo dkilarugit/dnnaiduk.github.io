@@ -1,16 +1,39 @@
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-  const blogContainer = document.getElementById("blog-container");
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyZ8UdjdMhvOV20cqb4rL82udtXDoPHo9KfYXqP_jux8j3P5NbyUxa00JtcrA-jwtSqNA/exec';
 
-  // Sample posts - just edit the /blog-posts folder to add more
-  const blogPosts = [
-    { title: "My First Blog Post", file: "blog-posts/post1.html" },
-    { title: "Second Entry", file: "blog-posts/post2.html" }
-  ];
+document.getElementById("blog-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = document.getElementById("title").value.trim();
+  const content = document.getElementById("content").value.trim();
 
-  blogPosts.forEach(post => {
-    const postElement = document.createElement("div");
-    postElement.innerHTML = `<h3><a href="${post.file}" target="_blank">${post.title}</a></h3>`;
-    blogContainer.appendChild(postElement);
+  if (!title || !content) return;
+
+  const response = await fetch(SHEET_URL, {
+    method: "POST",
+    body: JSON.stringify({ title, content }),
+    headers: { "Content-Type": "application/json" }
   });
+
+  if (response.ok) {
+    alert("Post submitted!");
+    document.getElementById("blog-form").reset();
+    loadBlogPosts();
+  } else {
+    alert("Something went wrong. Try again.");
+  }
 });
+
+async function loadBlogPosts() {
+  const container = document.getElementById("blog-container");
+  container.innerHTML = "Loading...";
+  const res = await fetch(SHEET_URL);
+  const posts = await res.json();
+  container.innerHTML = "";
+
+  posts.forEach(post => {
+    const div = document.createElement("div");
+    div.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p><small>${new Date(post.timestamp).toLocaleString()}</small><hr/>`;
+    container.appendChild(div);
+  });
+}
+
+loadBlogPosts();
