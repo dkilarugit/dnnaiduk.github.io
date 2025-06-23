@@ -2,72 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Durga Narasaiah Naidu Kilaru - Portfolio" />
-  <title>Durga Narasaiah Naidu Kilaru</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #1a1a1a;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
-      margin-bottom: 0.5rem;
-    }
-    .highlight {
-      color: #007acc;
-      font-weight: bold;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      background-color: #eaeaea;
-      margin-top: 3rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Durga Naidu | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Durga Narasaiah Naidu Kilaru</h1>
-    <p>Data Science | Civil Engineering | AI & ML Enthusiast</p>
+    <nav>
+      <h1>Durga Naidu</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Hello, I'm Durga</h2>
+      <p>Data Scientist | AI Enthusiast | Web Developer</p>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+  </section>
+
+  <section id="about">
     <h2>About Me</h2>
-    <p>Hello! I'm Durga, currently pursuing a Master's in Data Science at UMass Dartmouth. I blend my civil engineering background with a strong passion for artificial intelligence and machine learning.</p>
+    <p>I’m a passionate data scientist blending Civil Engineering with AI. Skilled in data analysis, machine learning, and visualization. I enjoy building beautiful, functional web apps.</p>
   </section>
 
-  <section>
+  <section id="projects">
     <h2>Projects</h2>
-    <ul>
-      <li><strong>Traveling Salesman using Genetic Algorithm</strong> – Solved TSP using GA, optimized route planning.</li>
-      <li><strong>IPL Team Performance Dashboard</strong> – Built with D3.js for interactive cricket data visuals.</li>
-      <li><strong>AI-Powered Banking App (Concept)</strong> – Fraud detection + instant transaction reversal.</li>
-    </ul>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>TSP Genetic Algorithm</h3>
+        <p>Solves the Traveling Salesman Problem using GA. Efficient and optimized.</p>
+      </div>
+      <div class="project-card">
+        <h3>IPL Team Performance Viz</h3>
+        <p>Interactive D3.js charts comparing IPL teams over seasons.</p>
+      </div>
+      <div class="project-card">
+        <h3>AI Fraud Detection Banking App</h3>
+        <p>Smart banking app with auto fraud detection and money recall features.</p>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:dnnaidukilaru@gmail.com">dnnaidukilaru@gmail.com</a></p>
-    <p>Location: Fall River, USA</p>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <footer>
-    &copy; 2025 Durga Narasaiah Naidu Kilaru
+    <p>&copy; 2025 Durga Naidu. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
