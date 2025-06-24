@@ -1,4 +1,4 @@
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyZ8UdjdMhvOV20cqb4rL82udtXDoPHo9KfYXqP_jux8j3P5NbyUxa00JtcrA-jwtSqNA/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzqaO75c5mTwEXPtwDhd_2NCs1ABKNQ4txFfk9HY6eu-RJiGZOvRRQLZjV9X-Ic9w0C1A/exec';
 
 document.getElementById("blog-form").addEventListener("submit", async (e) => {
   e.preventDefault();
