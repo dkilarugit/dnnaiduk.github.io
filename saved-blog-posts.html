@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved Blog Posts</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section>
+      <h2>Saved Blog Posts</h2>
+      <div id="all-blog-container"></div>
+    </section>
+  </main>
+  <script>
+    // Display all blogs from localStorage
+    document.addEventListener('DOMContentLoaded', function () {
+      const blogContainer = document.getElementById('all-blog-container');
+      const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+      if (blogs.length === 0) {
+        blogContainer.innerHTML = "<p>No blog posts yet.</p>";
+      } else {
+        blogs.slice().reverse().forEach(blog => {
+          const blogDiv = document.createElement('div');
+          blogDiv.className = 'blog-post';
+          blogDiv.innerHTML = `<h3>${blog.title}</h3><p>${blog.content}</p>`;
+          blogContainer.appendChild(blogDiv);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
