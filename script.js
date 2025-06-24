@@ -1,39 +1,36 @@
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbymwJbuTElG4J2aCMaIAP7g1WbfulwcbfPzK8t7zWbv0psOw2eiJFzMtVBT7KTdOAGjJQ/exec';
+// Blog form functionality: Save and display blogs in localStorage
 
-document.getElementById("blog-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const title = document.getElementById("title").value.trim();
-  const content = document.getElementById("content").value.trim();
+document.addEventListener('DOMContentLoaded', function () {
+  const blogForm = document.getElementById('blog-form');
+  const blogContainer = document.getElementById('blog-container');
 
-  if (!title || !content) return;
-
-  const response = await fetch(SHEET_URL, {
-    method: "POST",
-    body: JSON.stringify({ title, content }),
-    headers: { "Content-Type": "application/json" }
-  });
-
-  if (response.ok) {
-    alert("Post submitted!");
-    document.getElementById("blog-form").reset();
-    loadBlogPosts();
-  } else {
-    alert("Something went wrong. Try again.");
+  // Load blogs from localStorage
+  function loadBlogs() {
+    const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+    blogContainer.innerHTML = '';
+    blogs.reverse().forEach(blog => {
+      const blogDiv = document.createElement('div');
+      blogDiv.className = 'blog-post';
+      blogDiv.innerHTML = `<h3>${blog.title}</h3><p>${blog.content}</p>`;
+      blogContainer.appendChild(blogDiv);
+    });
   }
+
+  // Handle blog form submission
+  if (blogForm) {
+    blogForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+      if (title && content) {
+        const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+        blogs.push({ title, content });
+        localStorage.setItem('blogs', JSON.stringify(blogs));
+        blogForm.reset();
+        loadBlogs();
+      }
+    });
+  }
+
+  loadBlogs();
 });
-
-async function loadBlogPosts() {
-  const container = document.getElementById("blog-container");
-  container.innerHTML = "Loading...";
-  const res = await fetch(SHEET_URL);
-  const posts = await res.json();
-  container.innerHTML = "";
-
-  posts.forEach(post => {
-    const div = document.createElement("div");
-    div.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p><small>${new Date(post.timestamp).toLocaleString()}</small><hr/>`;
-    container.appendChild(div);
-  });
-}
-
-loadBlogPosts();
